@@ -256,7 +256,7 @@ def search():
                 number_of_variants = len(df) / number_of_pops
 
                 if 'nud' in request.form:
-                    if number_of_variants >= 3:
+                    if number_of_variants > 3:
                         nud = {}
                         nud_w = {}
                         for key, val in p_names.items():
@@ -264,11 +264,15 @@ def search():
                             nud[key] = SQLtoNucDiv(val, val.iloc[0]["position"], val.iloc[-1]["position"])
                             # calculating the ND sliding window values for each population selected by the user
                             nud_w[key] = nuc_div_sliding(val, Window)
-                    else:
+                        check_nud = True
+                    elif number_of_variants > 1:
                         nud = {}
                         for key, val in p_names.items():
                             nud[key] = SQLtoNucDiv(val, val.iloc[0]["position"], val.iloc[-1]["position"])
-                    check_nud = True
+                        check_nud = True
+                    else:
+                        check_nud = False
+
 
                 if 'hapd' in request.form:
                     if number_of_variants >= 3:
@@ -279,11 +283,14 @@ def search():
                             hapd[key] = SQLtoHapDiv(val)
                             # calculating the HD sliding window values for each population selected by the user
                             hapd_w[key] = SQLtoHapDiv_window(val, Window)
-                    else:
+                        check_hapd = True
+                    elif number_of_variants > 1:
                         hapd = {}
                         for key, val in p_names.items():
                             hapd[key] = SQLtoHapDiv(val)
-                    check_hapd = True
+                        check_hapd = True
+                    else:
+                        check_hapd = False
 
                 if 'td' in request.form:
                     if number_of_variants >= 3:
@@ -294,35 +301,41 @@ def search():
                             td[key] = SQLtoTD(val)
                             # calculating the TD sliding window for each population selected by the user
                             td_w[key] = SQLtoTD_window(val, Window)
-                    else:
+                        check_td = True
+                    elif number_of_variants > 1:
                         td = {}
                         for key, val in p_names.items():
                             td[key] = SQLtoTD(val)
-                    check_td = True
+                        check_td = True
+                    else:
+                        check_td = False
 
                 if 'fst' in request.form:
-                    # making a list of tuples with every combination possible for the populations selected by the user
-                    combos = list(combinations(population_list, 2))
-                    fst = {}
-                    # for each tuple the two populations were extracted and used to produce the key
-                    for element in combos:
-                        pop1 = element[0]
-                        pop2 = element[1]
-                        key = str("FST - " + pop1 + " - " + pop2)
-                        # the FST value was calculated for each combination of population and stored in the dictionary
-                        fst[key] = SQLtoFST(df[df["population"] == pop1], df[df["population"] == pop2])
-                    check_fst = True
-
-                    if number_of_variants >= 3:
-                        fst_w = {}
-                        # extracting out the two populations in the tuple and making them the key for the dictionary
+                    if number_of_variants > 1:
+                        # making a list of tuples with every combination possible for the populations selected by the user
+                        combos = list(combinations(population_list, 2))
+                        fst = {}
+                        # for each tuple the two populations were extracted and used to produce the key
                         for element in combos:
                             pop1 = element[0]
                             pop2 = element[1]
                             key = str("FST - " + pop1 + " - " + pop2)
-                            # calculating the FST sliding windows for the pairs of populations and storing the value in the dictinary
-                            fst_w[key] = SQLtoFST_window(df[df["population"] == pop1], df[df["population"] == pop2], Window)
-                    check_fst = True
+                            # the FST value was calculated for each combination of population and stored in the dictionary
+                            fst[key] = SQLtoFST(df[df["population"] == pop1], df[df["population"] == pop2])
+                        check_fst = True
+
+                        if number_of_variants >= 3:
+                            fst_w = {}
+                            # extracting out the two populations in the tuple and making them the key for the dictionary
+                            for element in combos:
+                                pop1 = element[0]
+                                pop2 = element[1]
+                                key = str("FST - " + pop1 + " - " + pop2)
+                                # calculating the FST sliding windows for the pairs of populations and storing the value in the dictinary
+                                fst_w[key] = SQLtoFST_window(df[df["population"] == pop1], df[df["population"] == pop2], Window)
+                        check_fst = True
+                    else:
+                        check_fst = False
 
                 # final_stat contains all the values calculated  by stat functions
                 final_stat = {}
