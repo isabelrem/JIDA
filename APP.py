@@ -398,7 +398,10 @@ pop_colour = dict(zip(all_pop, colours))
 
 @app.route("/Nucleotide diversity")
 def Nucleotide_graph():
-    ''' Nucleotide diversity vs population graph'''
+    ''' This function takes the Nucleotide diversity statistic calculated for the user's selected genomic range,
+    and returns a scatter plot of the nucleotide diversity values versus the user's selected populations.
+    Points on the graph when hovered over will display the exact values.
+    '''
 
     # retrieving the nucleotide diversity calculations and the population names then producing a pandas dataframe
     name = []
@@ -423,7 +426,11 @@ def Nucleotide_graph():
 
 @app.route("/Nucleotide Diversity Window")
 def Nucleotide_w_graph():
-    ''' Sliding window graphs for every population selected '''
+    ''' This function takes the windowed nucleotide diversity statistics calculated for the user's selected genomic range,
+    and returns a plot of the windowed nucleotide diversity values versus the user's selected genomic positions.
+    Points on the graph when hovered over will display the exact values.
+    Populations can be selected or deselected using an interactive legend.
+    '''
 
     # making empty lists to store the ND window values and the population name
     ND_window_list = []
@@ -480,7 +487,9 @@ def Nucleotide_w_graph():
 
 @app.route("/Haplotype Diversity")
 def Haplotype_graph():
-    ''' Haplotype diversity vs populations selected by the user '''
+    ''' This function takes the haplotype diversity statistic calculated for the user's selected genomic range,
+    and returns a scatter plot of the haplotype diversity values versus the user's selected populations.
+    Points on the graph when hovered over will display the exact values. '''
 
     # retreiving the population and the HD value to produce a pandas dataframe
     name = []
@@ -505,6 +514,11 @@ def Haplotype_graph():
 
 @app.route("/Haplotype Diversity Window")
 def Haplotype_w_graph():
+    ''' This function takes the windowed haplotype diversity statistics calculated for the user's selected genomic range,
+        and returns a plot of the windowed haplotype diversity values versus the user's selected genomic positions.
+        Points on the graph when hovered over will display the exact values.
+        Populations can be selected or deselected using an interactive legend.
+        '''
     # making empty lists to store the ND window values and the population name
     HD_window_list = []
     name = []
@@ -562,7 +576,9 @@ def Haplotype_w_graph():
 
 @app.route("/Tajimas D")
 def Tajimas_graph():
-    ''' Graph for Tajima's D vs population selected by the user '''
+    ''' This function takes the Tajima's D statistic calculated for the user's selected genomic range,
+    and returns a scatter plot of the Tajima's D values versus the user's selected populations.
+    Points on the graph when hovered over will display the exact values. '''
 
     # the TD values and the populations have been extracted from the dictionary and made into a pandas database
     name = []
@@ -586,7 +602,10 @@ def Tajimas_graph():
 
 @app.route("/Tajimas D Window")
 def Tajimas_w_graph():
-    '''Tajima's D windows vs genomic position for each population the user selects '''
+    ''' This function takes the windowed Tajima's D statistics calculated for the user's selected genomic range,
+    and returns a plot of the windowed Tajima's D values versus the user's selected genomic positions.
+    Points on the graph when hovered over will display the exact values.
+    Populations can be selected or deselected using an interactive legend. '''
 
     # making empty lists to store the ND window values and the population name
     TD_window_list = []
@@ -645,7 +664,9 @@ def Tajimas_w_graph():
 
 @app.route("/FST")
 def FST_graph():
-    ''' FST vs population selected by the user '''
+    ''' This function takes the FST statistic calculated for the user's selected genomic range,
+    and returns a scatter plot of the FST values versus pairwise comparisons of the user's selected populations.
+    Points on the graph when hovered over will display the exact values. '''
 
     # extracting the FST values and populations and appending the values to a list
     name = []
@@ -669,7 +690,10 @@ def FST_graph():
 
 @app.route("/FST Window")
 def FST_w_graph():
-    ''' FST sliding window vs genomic position graph for all populations selected by the user '''
+    ''' This function takes the FST statistics calculated for the user's selected genomic range,
+    and returns a plot of the windowed FST values versus the user's selected genomic positions.
+    Points on the graph when hovered over will display the exact values.
+    Pairwise population comparisons can be selected or deselected using an interactive legend. '''
 
     # making empty lists to store the ND window values and the population name
     FST_window_list = []
