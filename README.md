@@ -11,10 +11,6 @@ using python versions...................
 ```bash
 pip install Flask
 pip install flask-wtf
-pip install psycopg2
-pip install SQLAlchemy
-pip install -U Flask-SQLAlchemy
-pip install matplotlib
 pip install biopython
 pip install scikit-allel[full]
 pip install plotly
