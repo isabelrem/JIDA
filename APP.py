@@ -128,7 +128,7 @@ def search():
                 # Checking if the query returned any results and displays a flash message accordingly
                 # if there were not results, the user is redirected to the home page and an error message is displayed
                 if sql_query.empty == True:
-                    flash('We could not find information for your query', "Error")
+                    flash('We could not find information for your query. Please note the genomic positions covered by this web application span from 9411239 - 48119740', "Error")
                     return redirect(url_for('home'))
 
                 # if there were valid results, the user is redirected to the search page, a df is created with the data
