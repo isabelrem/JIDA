@@ -21,7 +21,7 @@ from wtforms.validators import DataRequired, Length
 
 # Creating a box for Gene name and rs values that receives a string 
 
-#TASKS: work on validation, work on how to input only 1. 
+
 class SNPForm(FlaskForm):
 	gene = StringField('Gene Name', validators = [Length(min=2)],
 		description='Input a gene name or gene ID')
@@ -30,18 +30,21 @@ class SNPForm(FlaskForm):
 	rs = StringField('rs ID', validators= [Length(min=2)],
 		description='Input an rs value including "rs" and with no spaces')
 
-#For the chromosome number selection we want to use the SelectField option. The choices option receieves a list.
+#For the chromosome number selection , only chromosome 21 is used hence the choices list only has [21]
 	chrom = SelectField('Chromosome', choices = [21], validators=[Length(min=1)])
 
-#The start and end coordinates of the selected chromosome
+#for The start and end coordinates that receives integers  
 	start = IntegerField('Start Position',validators=[Length(min=1)])
 
 	end = IntegerField('End Position',validators=[Length(min=1)])
-
+	
+#For Window size selection
 	Window = IntegerField('Window Size',validators=[Length(min=1)])
-
+	
+#Submit button
 	submit = SubmitField('Submit')
-
+	
+#For Checkboxes
 	checkbox = BooleanField('Check')
 
 
