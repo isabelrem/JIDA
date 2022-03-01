@@ -215,9 +215,10 @@ def window_check(Window,start,end):
     message = None
 
     # difference in genomic coordinates
-    if ((end - start) < Window) or (Window < 3):
-        message = "Window size is greater than the distance between start and end positions.\
-         | Window= " + str(Window) + ", position distance= " + str(end-start)
+    if (end - start) >2:
+        if ((end - start) < Window) or (Window < 3):
+            message = "Window size is greater than the distance between start and end positions.\
+                 | Window= " + str(Window) + ", position distance= " + str(end-start)
 
 
     return message
