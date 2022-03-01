@@ -32,6 +32,9 @@ python APP.py
 
 ## Credits and Contact
 Janeesh Kaur Bansal : j.k.bansal@se21.qmul.ac.uk
+
 Isabel Rachel Thompson : i.r.thompson@se21.qmul.ac.uk
+
 Diego Pava : d.a.pava@se21.qmul.ac.uk
+
 Aravind Pattisapu : v.pattisapu@se21.qmul.ac.uk
