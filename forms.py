@@ -20,8 +20,6 @@ from wtforms.validators import DataRequired, Length
 
 
 # Creating a box for Gene name and rs values that receives a string 
-
-
 class SNPForm(FlaskForm):
 	gene = StringField('Gene Name', validators = [Length(min=2)],
 		description='Input a gene name or gene ID')
@@ -29,7 +27,7 @@ class SNPForm(FlaskForm):
 
 	rs = StringField('rs ID', validators= [Length(min=2)],
 		description='Input an rs value including "rs" and with no spaces')
-
+	
 #For the chromosome number selection , only chromosome 21 is used hence the choices list only has [21]
 	chrom = SelectField('Chromosome', choices = [21], validators=[Length(min=1)])
 
