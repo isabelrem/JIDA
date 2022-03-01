@@ -1,6 +1,7 @@
 # JIDA
 
-JIDA is a web application that retrieves SNP information for a genomic region of interest in Homo sapiens and calculates specific summary statistics for specified populations. 
+JIDA is a web application that retrieves SNP information for a genomic region of interest in Homo sapiens and calculates specific summary 
+statistics for specified populations. 
 
 ## Installation
 
