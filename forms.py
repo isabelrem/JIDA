@@ -19,8 +19,10 @@ from wtforms.validators import DataRequired, Length
 #			- The information given by the user has to be validated: no empty spaces, short rs values, etc.
 
 
-# Creating a box for Gene name and rs values that receives a string 
+
 class SNPForm(FlaskForm):
+	
+# Creating a box for Gene name and rs values that receives a string 
 	gene = StringField('Gene Name', validators = [Length(min=2)],
 		description='Input a gene name or gene ID')
 
