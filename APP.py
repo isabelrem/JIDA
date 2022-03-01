@@ -145,8 +145,12 @@ def search():
                 # Checks the size of the sliding window is appropriate for the difference between genomic positions (start,end)
                 w_check = window_check(Window, df.iloc[1][1], df.iloc[-1][1])
 
-                # if the sliding window size is bigger than the distance between positions, returns an error message.
-                if (w_check != None) and (rs == ""):
+
+                # if the sliding window size is bigger than the distance between positions
+                # AND the input wasn't an rs value
+                # AND the number of bases between the user's chosen positions isn't less than 3
+                # returns an error message.
+                if (w_check != None) and (rs == "") and ((df.iloc[-1][1] - df.iloc[1][1]) >= 3):
                     flash(f'{w_check}', "Error")
                     return redirect(url_for('home'))
 
