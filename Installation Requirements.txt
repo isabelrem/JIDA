@@ -1,0 +1,7 @@
+To run the application, you need to install the following through your command line:
+
+pip install Flask
+pip install flask-wtf
+pip install biopython
+pip install scikit-allel[full]
+pip install plotly
