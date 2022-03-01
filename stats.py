@@ -175,7 +175,7 @@ def nucleotide_diversity(genotype_list, start, end):
 ############################ HAPLOTYPE DIVERSITY #############################
 
 def haplotype_diversity(haplotypelist):
-    ''' calculating haplotype diversity from a haplotype list '''
+    ''' Calculating haplotype diversity with a haplotype list input '''
 
     # importing dependencies
     import allel
@@ -196,7 +196,7 @@ def haplotype_diversity(haplotypelist):
 ################################### TAJIMA'S D ########################################
 
 def Tajimas_D(genotype_list,POS):
-    ''' Using the genotype list to calculate Tajima's D'''
+    ''' Calculating Tajima's D with the genotype list and a list with the variant positions '''
 
     # import required dependencies
     import allel
@@ -216,7 +216,7 @@ def Tajimas_D(genotype_list,POS):
 ############################### HUDSON FST ###############################
 
 def hudson_FST(pop1_genotype_list, pop2_genotype_list):
-    ''' Using two genotype lists as input, calculates the FST between two populations'''
+    ''' Calculating Hudsons FST with the genotype lists of two populations '''
 
     # import dependencies
     import allel
