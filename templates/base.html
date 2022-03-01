@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+{# Base template for the website. All changes in appearance can be done here #}
+<html>
+<he ad >
+
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+	<title>JIDA</title>
+	<meta content="" name="description">
+	<meta content="" name="keywords">
+
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+	<!-- Vendor CSS Files -->
+	<link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+	<!-- Template Main CSS File -->
+	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet"></head>
+<style>
+	.nav-item {min-width: 10rem;} ;
+
+</style>
+{# navigation bar#}
+<body>
+	{% block content %}
+	<!-- ======= Header ======= -->
+	<header id="header" class="fixed-top d-flex align-items-center">
+	  <div class="container">
+		<div class="header-container d-flex align-items-center justify-content-between">
+		  <div class="logo">
+			<h1 class="text-light"><a href="#"><span>JIDA</span></a></h1>
+
+
+		  </div>
+
+		  <nav id="navbar" class="navbar">
+			<ul>
+			  <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+			  <li><a class="nav-link scrollto" href="#about">About</a></li>
+			  <li><a class="nav-link scrollto" href="#how_to_use">How to use</a></li>
+			  <li><a class="nav-link scrollto" href="#glossary">Glossary</a></li>
+			  <li><a class="nav-link scrollto" href="#Contact_Us">Contact Us</a></li>
+
+			  <li><a class="getstarted scrollto" href="home"target = "_blank">SNP browser</a></li>
+
+			</ul>
+			<i class="bi bi-list mobile-nav-toggle"></i>
+		  </nav><!-- .navbar -->
+
+		</div><!-- End Header Container -->
+	  </div>
+	</header><!-- End Header -->
+
+
+	<!-- ======= Hero Section ======= -->
+	<section id="hero" class="d-flex align-items-center">
+	  <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+		<h1>Welcome to JIDA</h1>
+		<br>
+
+		<h2>web application that can retrieve SNP information for a
+			genomic region of interest from a VCF file.</h2>
+		<h2>Calculates summary statistics, returns their values and plot their distribution.</h2>
+	  </div>
+	</section><!-- End of Hero Section  -->
+
+
+	  <!-- ======= About Section ======= -->
+
+	  <section id="about" class="about">
+		<div class="container">
+
+		  <div class="row content">
+			<div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+			  <h2>About</h2>
+			  <h3>Population genomics is the science that studies the genetic diversity within and between populations.</h3>
+			  <h5>By analysing the similarities and differences of genetic variation between individuals
+				from different populations, it is possible to infer historical (both neutral and adaptive) events that
+				characterized the evolution of said species. Inferences from population genomic data are widely
+				applied in conservation genetics (e.g., molecular monitoring of endangered species), evolutionary
+				biology (e.g., demographic reconstruction), and precision medicine, among many other fields.</h5>
+
+				<h6>The discipline has received notable attention in recent years thanks to the technological
+					advancements of sequencing genomes at large-scale. The advent of next-generation sequencing
+					(NGS) technologies has allowed researchers to obtain vast amounts of genomic data for many
+					samples belonging to several populations. After sequencing, mapping, filtering and variant calling,
+					data is usually reported in variant call format (VCF) files which contain genotype (or haplotype)
+					information for sequenced sampled at each called single nucleotide polymorphism (SNP). In the case
+					of human population genomics, the most popular database is The International Genome Sample
+					Resource which collects sequencing data from multiple human populations. (1000
+					Genomes Project data set)</h6>
+
+			</div>
+			<div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-left" data-aos-delay="200">
+			  <p>
+				The user will be able to retrieve SNP information given either a genomic coordinate (chromosome, start and end), SNP name (rs value), or gene name
+			  </p>
+			  <p> The application will return the following information for each SNP:</p>
+			  <ul>
+				<li><i class="ri-check-double-line"></i> Name (rs value)</li>
+				<li><i class="ri-check-double-line"></i> Genomic Position</li>
+				<li><i class="ri-check-double-line"></i> Genotype frequencies and Allele frequency (provided for each population separately)</li>
+				<br>
+				<p>If multiple SNPs are returned, the user will be able to select the population(s) and summary statistics of interest,
+					and the application will calculate them and plot their distribution in sliding windows along the region.</p>
+				<p>The summary statistics available are:</p>
+
+				<li><i class="ri-check-double-line"></i> Genetic diversity</li>
+				<li><i class="ri-check-double-line"></i> Haplotype diversity</li>
+				<li><i class="ri-check-double-line"></i> Test against Neutrality (Tajima’s D)</li>
+				<li><i class="ri-check-double-line"></i> If multiple populations are selected, then population genetic variation (FST
+					value) for each pair of populations will be reported.</li>
+
+			</div>
+		  </div>
+
+		</div>
+	  </section><!-- End About Section -->
+
+
+	  <br><br>
+	  
+
+	  <!-- ======= How to use Section ======= -->
+
+	  <section id="how_to_use" class="how_to_use">
+		  <div class="container">
+			<div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
+		  <h2>How to Use : </h2>
+		  <p>Click on the 'SNP Browser' loacted on the navigation bar at the top right:</p>
+		  <p>You will be directed to a new page called 'JIDA SNP Browser'</p>
+		  <p>To find your SNP's of interest please follow one of the following:</p>
+
+				<li>Type in a Gene name</li>
+				<li>Type in a known rs ID</li>
+				<li>Type in genomic coordinate (chromosome, start and end)</li>
+			    <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Limitation : Only one chromosome can be seleted (21)</em>
+				<li>Select the population(s) of interest</li>
+				<li>Select the summary statistics of interest</li>
+				<li>Enter the window size for ststistics calculation</li>
+				<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default window size is 3</em>
+				<br>
+				<br>
+				
+		        <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Once you are ready, please click the  <b>Submit</b> button</em>
+				<br>
+				<br>
+				<li>Above each summary statistic output table there is a <b>Show as graph</b> button </li>
+				<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Two graphs are provided:</em>
+				<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plotting Populations selected against the values,  Plotting selected sliding window size against the values</em>
+				<li>With the <b>Download text file</b> button, a text file with the values of summary statistics can be downloaded </li>
+				<li>SNP information plus genotype and allele frequencies are provided for each population separately.</li>
+
+		</div>
+	  </section><!-- End of How to use Section -->
+
+	  <br><br>
+
+
+	  <!-- ======= Glossary Section ======= -->
+
+	  <section id="glossary" class="glossary">
+		<div class="container">
+			
+		<h2>Glossary</h2>
+		<br>
+
+		<a href="https://en.wikipedia.org/wiki/Genotype_frequency"target = "_blank">Genotype frequency</a>
+		<p>Genetic variation in populations can be analyzed and quantified by the frequency of alleles.
+			 Two fundamental calculations are central to population genetics: allele frequencies and genotype frequencies.
+			  Genotype frequency in a population is the number of individuals with a given genotype divided by the total number
+			   of individuals in the population. In population genetics, the genotype frequency is the frequency or proportion 
+			   (i.e., 0 < f < 1) of genotypes in a population. Although allele and genotype frequencies are related, 
+			   it is important to clearly distinguish them. Genotype frequency may also be used in the future 
+			   (for "genomic profiling") to predict someone's having a disease or even a birth defect. 
+			   It can also be used to determine ethnic diversity.</p>
+
+		<a href="https://en.wikipedia.org/wiki/Allele_frequency"target = "_blank">Allele frequency</a>
+		<p>Allele frequency, or gene frequency, is the relative frequency of an allele (variant of a gene) 
+			at a particular locus in a population, expressed as a fraction or percentage.[1] Specifically, 
+			it is the fraction of all chromosomes in the population that carry that allele. Microevolution is the 
+			change in allele frequencies that occurs over time within a population. The allele frequency is distinct 
+			from the genotype frequency, although they are related, and allele frequencies can be calculated from genotype frequencies. 
+			In population genetics, allele frequencies are used to describe the amount of variation at a particular locus or across
+			 multiple loci. When considering the ensemble of allele frequencies for many distinct loci, 
+			 their distribution is called the allele frequency spectrum.</p>
+
+		<a href="https://en.wikipedia.org/wiki/Nucleotide_diversity"target = "_blank">Nucleotide Diversity</a>
+		<p>Nucleotide diversity is a concept in molecular genetics which is used to measure the degree of
+			 polymorphism within a population. Nucleotide diversity is a measure of genetic variation. 
+			 It is usually associated with other statistical measures of population diversity,
+			and is similar to expected heterozygosity. This statistic may be used to monitor diversity 
+			within or between ecological populations, to examine the genetic variation in crops and related species,
+			 or to determine evolutionary relationships.</p>
+		
+		<a href="https://en.wikipedia.org/wiki/Haplotype#Diversity"target = "_blank">Haplotype Diversity</a>
+		<p>Haplotype diversity is a measure of the uniqueness of a particular haplotype in a given population.
+			it is used to mean a collection of specific alleles (that is, specific DNA sequences) in a cluster of tightly
+			 linked genes on a chromosome that are likely to be inherited together-that is, they are likely to be conserved 
+			 as a sequence that survives the descent of many generations of reproduction. A second use is to mean a set of
+			  linked single-nucleotide polymorphism (SNP) alleles that tend to always occur together
+			   (i.e., that are associated statistically). It is thought that identifying these statistical associations
+			    and a few alleles of a specific haplotype sequence can facilitate identifying all other such polymorphic
+				 sites that are nearby on the chromosome. Such information is critical for investigating the genetics of
+				  common diseases; which in fact have been investigated in humans by the International HapMap Project.
+				   Thirdly, many human genetic testing companies use the term in a third way: to refer to an individual
+				    collection of specific mutations within a given genetic segment.</p>
+
+		<a href="https://en.wikipedia.org/wiki/Tajima%27s_D"target = "_blank">Test Against Neutrality</a>
+		<p>Tajima's D is a population genetic test statistic created by and named after the Japanese researcher Fumio Tajima.
+			 Tajima's D is computed as the difference between two measures of genetic diversity:
+			 the mean number of pairwise differences and the number of segregating sites,
+			  each scaled so that they are expected to be the same in a neutrally evolving population of constant size.</p>
+
+		<p>The purpose of Tajima's D test is to distinguish between a DNA sequence evolving randomly ("neutrally")
+			 and one evolving under a non-random process, including directional selection or balancing selection,
+			 demographic expansion or contraction, genetic hitchhiking, or introgression.
+			 A randomly evolving DNA sequence contains mutations with no effect on the fitness and survival of an organism.
+			 The randomly evolving mutations are called "neutral", while mutations under selection are "non-neutral".
+			  For example, a mutation that causes prenatal death or severe disease would be expected to be under selection.
+			  In the population as a whole, the frequency of a neutral mutation fluctuates randomly
+			  (i.e. the percentage of individuals in the population with the mutation changes from one generation to the next,
+			   and this percentage is equally likely to go up or down) through genetic drift.</p>
+		
+		<a href="https://en.wikipedia.org/wiki/Fixation_index"target = "_blank">Population Genetic variation</a>
+		<p>The fixation index (FST) is a measure of population differentiation due to genetic structure.
+			It is frequently estimated from genetic polymorphism data, such as single-nucleotide polymorphisms (SNP)
+			or microsatellites. Developed as a special case of Wright's F-statistics,
+			it is one of the most commonly used statistics in population genetics.</p>
+
+			<a href="https://github.com/isabelrem/SoftwareDevProject"target = "_blank">github link</a>
+	  </div>
+	</section><!-- End of Glossary Section -->
+
+
+	<!-- ======= Contact Us section  ======= -->
+
+	  <section id="#Contact_Us" class="Contact Us">
+		<div class="container">
+		<h2>Contact Us</h2>
+		<br>
+		<br>
+		<h5>Janeesh Kaur Bansal :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; j.k.bansal@se21.qmul.ac.uk </h5>
+		<h5>Isabel Rachel Thompson :&nbsp;&nbsp; i.r.thompson@se21.qmul.ac.uk </h5>
+		<h5>Diego Pava :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d.a.pava@se21.qmul.ac.uk</h5>
+		<h5>Aravind Pattisapu :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; v.pattisapu@se21.qmul.ac.uk</h5>
+		<br>
+
+		<h5>Students of <a href="https://www.qmul.ac.uk/postgraduate/taught/coursefinder/courses/bioinformatics-msc/"target = "_blank">QMUL Bioinformatics-MSc</a></h5>
+        
+		<br>
+	    </div>
+      </section><!-- End of Contact Us Section -->
+
+
+
+	<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script src="{{ url_for('static', filename='vendor/purecounter/purecounter.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+
+	<!-- Template Main JS File -->
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	{% endblock %}
+  </body>
+  </html>
+
+

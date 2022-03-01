@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body style="background-image: url('https://wallpaperaccess.com/download/dna-4k-3788423'); color: white;">
+    <div class = "container">
+        <!-- show the information -->
+        <div class="row" style="background-color: aquamarine; color: black;">
+            <div class="col-8"><h1> {{text}} </h1></div>   
+         </div>
+    </div>
+
+    <br>
+
+
+    {# This block of code displays the flash warnings from the search function. Source: https://flask.palletsprojects.com/en/2.0.x/patterns/flashing/ #}
+   <div class = container>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for category, message in messages %}
+                        {% if category == "Error"%}
+                             <div class="alert alert-danger" role="alert">
+                                <strong>{{category}}</strong>: {{message}}</li>
+                            </div>
+                        {% endif %}
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    
+
+
+
+    <!-- How to use portal information -->
+    <div class = "container" >
+        <div class="col-8">
+                <br>
+                <p> To find your SNP's of interest please follow <b>one</b> of the following: <p>
+                <li>Type in a known rs ID</li>
+				<li>Type in a Gene name</li>
+				<li>Type in genomic coordinate (chromosome, start and end)</li>
+			    <br> 
+        </div>   
+    </div>
+     
+    <!--Getting various inputs for search functions here-->
+    <div class="container">
+        <form method="POST", action="search">
+            {{form.csrf_token}}
+            <!--For Rs-ID-->
+                <div class="form-group row">
+                    {{form.rs.label(class="col-sm-2 col-form-label")}}
+                    <div class="col-sm-3">
+                        {{form.rs(class="form-control")}}
+                    </div>
+                </div>
+                <br>
+                <!--For Gene name -->
+                <div class="form-group row">
+                    {{form.gene.label(class="col-sm-2 col-form-label")}}
+                    <br>
+                    <div class="col-sm-3">
+                        {{form.gene(class="form-control")}}
+                    </div>
+                    <br>
+                    <br>
+                <!--For Genomic positions-->
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-1">  
+                        {{form.chrom.label}}
+                        {{form.chrom(class="form-control")}}
+                    </div>
+                    <div class="form-group col-md-2">
+                        {{form.start.label}}
+                        {{form.start(class="form-control")}}
+                    </div>
+                    <div class="form-group col-md-2">
+                        {{form.end.label}}
+                        {{form.end(class="form-control")}}
+                        <br>
+                    </div>
+                    <hr/>
+                <!--Check boxes for Population selection -->
+                    <p><b>Select the population(s) of interest:</b></p>
+                    
+                    <div class="form-group">
+                        <input type="checkbox" id="GBR" name="GBR" checked>
+                        <label for="GBR">British</label>
+                        
+                        <input type="checkbox" id="COL" name="COL" checked>
+                        <label for="COL">Colombian</label>
+                    
+                        <input type="checkbox" id="FIN" name="FIN" checked>
+                        <label for="FIN">Finnish</label>
+                    
+                        <input type="checkbox" id="PUN" name="PUN" checked>
+                        <label for="PUN">Punjabi</label>
+                    
+                        <input type="checkbox" id="TEL" name="TEL" checked>
+                        <label for="TEL">Telugu</label>
+                    </div>
+                    <br>
+                    <br>
+                    <hr/>
+                    <!--Check boxes for Statistics selection -->
+                    <p><b>Select the summary statistic(s) of interest:</b></p>
+                    <div class="form-group">
+                        <input type="checkbox" id="nud" name="nud" checked>
+                        <label for="nud">Nucleotide diversity</label>
+                    
+                        <input type="checkbox" id="hapd" name="hapd" checked>
+                        <label for="hapd">Haplotype diversity</label>
+                    
+                        <input type="checkbox" id="td" name="td" checked>
+                        <label for="td">Tajimas D</label>
+                    
+                        <input type="checkbox" id="fst" name="fst" checked>
+                        <label for="fst">Hudson FST</label>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                    <!--For Window size -->
+                        <label for="quantity"><b>Window size : </b></label>
+                        <input type="number" id="Window" name="Window" min="3">
+                        <em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Default window size is 3)</em>
+                        </div>
+                    </div>
+                    <hr/>
+                    <!--Submit button -->
+                    <div class="form-group row col-form-label">
+                        <div class="col-sm-10">
+                            {{form.submit(class="btn btn-primary")}}
+                        </div>
+                        <br>
+                        <br>   
+                </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</body>
+
+{% endblock content %} 
