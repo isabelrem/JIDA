@@ -377,7 +377,26 @@ def SQLtoHapDiv(df):
 ############################### SQL to Windowed Haplotype Diversity ###############################
 
 def SQLtoHapDiv_window(dataframe, window_size=10):
-    '''Using a dataframe and (optional) window size as input, outputs a list of haplotype diversities for each window'''
+    '''Using a dataframe and (optional) window size as input, outputs a list of haplotype diversities for each window
+    
+    Parameters
+    ----------
+    
+    dataframe: a pandas dataframe, created using the python pandas library. 
+    window_size: int
+    
+    Description
+    -----------
+    
+    Recieves 2 parameters, a pandas dataframe and a window_size. Using the window_size integer, the dataframe is subset into windows and the haplotype diversity is calculated across the window. 
+    Calculating nucleotide diversity for the windows uses the pre-written functions haplotype_list() and haplotype_diversity(). 
+    This function depends on the python packages/modules scikit-allel, pandas and math.
+    
+    Returns
+    -------
+    
+    A list of haplotype diversity values calculated for each window.
+    '''
 
     # import dependencies
     import math
@@ -475,7 +494,26 @@ def SQLtoTD(df):
 ############################### SQL TO WINDOWED TAJIMA'S D ###############################
 
 def SQLtoTD_window(dataframe, window_size=10):
-    ''' Using a dataframe and (optional) window size as input, returns a list of Tajima's D values for each window'''
+    ''' Using a dataframe and (optional) window size as input, returns a list of Tajima's D values for each window.
+    
+    Parameters
+    ----------
+    
+    dataframe: a pandas dataframe, created using the python pandas library. 
+    window_size: int
+    
+    Description
+    -----------
+    
+    Recieves 2 parameters, a pandas dataframe and a window_size. Using the window_size integer, the dataframe is subset into windows and the Tajima's D statistic is calculated across the window. 
+    Calculating Tajima's D for each window uses the pre-written functions SQLtoTD(). 
+    This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
+    
+    Returns
+    -------
+    
+    A list of Tajima's D values calculated for each window.
+    '''
 
     # import dependencies
     import numpy as np
@@ -557,7 +595,28 @@ def SQLtoFST(df_pop1, df_pop2):
 ############################### SQL TO WINDOWED FST ###############################
 
 def SQLtoFST_window(df_pop1, df_pop2, window_size=10):
-    ''' Using two population dataframes and (optional) window size as input, calculates windowed FST between the two populations'''
+    ''' Using two population dataframes and (optional) window size as input, calculates windowed FST between the two populations.
+    
+    Parameters
+    ----------
+    
+    df_pop1: a pandas dataframe containing variant data from only 1 population, created using the python pandas library. 
+    df_pop2: a pandas dataframe containing variant data from only 1 population, created using the python pandas library. 
+    window_size: int
+    
+    Description
+    -----------
+    
+    Recieves 3 parameters, one pandas dataframe for one population, another pandas dataframe for a second population, and a window_size. 
+    Using the window_size integer, the both population dataframes are subset into windows and the FST statistic is calculated across the window using both dataframes. 
+    Calculating the FST for each window uses the pre-written functions SQLtoFST(). 
+    This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
+    
+    Returns
+    -------
+    
+    A list of FST values calculated for each window.
+    '''
 
     # import dependencies
     import numpy as np
