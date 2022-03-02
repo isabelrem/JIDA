@@ -1,3 +1,4 @@
+``` html
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html><head><title>Python: module stats</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -248,3 +249,4 @@ Returns<br>
 Single&nbsp;nucleotide&nbsp;diversity&nbsp;value</tt></dd></dl>
 </td></tr></table>
 </body></html>
+```
