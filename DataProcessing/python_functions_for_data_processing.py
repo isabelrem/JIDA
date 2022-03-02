@@ -430,5 +430,3 @@ def gene_aliases(gene_name):
             return gene_aliases_list
 
 
-gene_aliases("")
-
