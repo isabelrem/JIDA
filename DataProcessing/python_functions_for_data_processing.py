@@ -1,4 +1,49 @@
 # use the vcf to snp characteristics table for both
+def VCFtoPandas(infile):
+    ''' converts VCF to pandas dataframe: from https://stackoverflow.com/questions/70219758/vcf-data-to-pandas-dataframe
+    
+    Parameters
+    ----------
+    
+    infile: str
+    
+    
+    Description
+    -----------
+    
+    Takes 1 parameter, the path to a VCF file. Opens the VCF file and extracts lines that begin with #CHROM only. 
+    Tab separate the data and convert it to a pandas dataframe.
+    This function depends on the python packages/modules pandas.
+    
+    Returns
+    -------
+    
+    A pandas dataframe
+    
+    '''
+
+    # import dependencies
+    import pandas as pd
+    print("dependencies imported")
+
+    # produce db from VCf file specified
+    with open(infile, "r") as f:
+        lines = f.readlines()
+        chrom_index = [i for i, line in enumerate(lines) if line.strip().startswith("#CHROM")]
+        data = lines[chrom_index[0]:]
+    print("VCF opened")
+
+    # set headers and database content
+    header = data[0].strip().split("\t")
+    informations = [d.strip().split("\t") for d in data[1:]]
+
+    # convert content to pandas dataframe
+    print("pandas df created")
+    return pd.DataFrame(informations, columns=header)
+
+
+
+
 
 def VCF_to_snp(inVCF, outCSV, start, end):
     '''converting multiple population VCFs to a combined SNP CSV, removing multi-allelic sites. 
