@@ -14,13 +14,13 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 Please download the following packages in your terminal...
 
 ```bash
-pip install pandas (in case this was not installed along with python)
-pip install numpy (in case this was not installed along with pandas)
 pip install Flask
 pip install flask-wtf
 pip install biopython
 pip install scikit-allel[full]
 pip install plotly
+pip install pandas
+pip install numpy
 ```
 
 ## How to run via command line
@@ -62,13 +62,13 @@ Second, clone the git repository or onedrive folder to your local machine. PLEAS
 Thirdly, download the prerequisite python packages/modules. This can be done from the terminal within Pycharm, or a separate application such as Windows Powershell.
 
 ```bash
-pip install pandas (in case this was not installed along with python)
-pip install numpy (in case this was not installed along with pandas)
 pip install Flask
 pip install flask-wtf
 pip install biopython
 pip install scikit-allel[full]
 pip install plotly
+pip install pandas
+pip install numpy
 ```
 
 
