@@ -341,3 +341,94 @@ def genomic_position_to_gene_name(chromosome, genome_position):
 
     # returning the dictionary
     return genome_position,name
+
+################ GENE ALIAS ################
+
+def gene_aliases(gene_name):
+    ''' Converted from genomic position to gene name using PyEnsembl
+
+    Parameters
+    ----------
+    gene_name: str
+
+    Description
+    -----------
+    The main body of the code was extracted from biostars (https://www.biostars.org/p/126277/). Minor changes were made
+    where the alias list produced could be indexed and spaces could be removed.
+
+    Returns
+    -------
+    A list of gene aliases'''
+
+    # import the required dependencies
+    import json
+    from Bio import Entrez
+    Entrez.email = "bt211032@qmul.ac.uk"
+
+    most_likely_entry = Entrez.esearch(db="gene",term="{gene_name} [Preferred Symbol] AND 9606 [Taxonomy ID]".format(gene_name=gene_name),retmode="json")
+    most_likely_entry_json = json.loads(most_likely_entry.read())
+    my_ids = most_likely_entry_json['esearchresult']['idlist']
+    if my_ids == []:
+        all_ids_entries =  Entrez.esearch(db="gene",term="{gene_name} AND 9606 [Taxonomy ID]".format(gene_name=gene_name),retmode="json")
+        all_ids_json = json.loads(all_ids_entries.read())
+        all_ids = all_ids_json['esearchresult']['idlist']
+        # print all_ids
+        for an_iden in all_ids:
+            record_with_aliases = Entrez.efetch(db="gene",id=an_iden,retmode="json")
+            aliases = []
+            for line in record_with_aliases:
+                if line.startswith("Official Symbol:"):
+                    aliases.append(line.split("and Name")[0].split(":")[1])
+                if line.startswith("Other Aliases:"):
+                    for x in [y.strip() for y in [x.strip() for x in line.split(":")[1:]][0].split(",")]:
+                        aliases.append(x)
+                    # print aliases
+                    if gene_name in aliases:
+                        return aliases[0]
+                    elif gene_name.replace(" ","") in aliases:
+                        return aliases[0]
+                    elif gene_name.replace("-","") in aliases:
+                        return aliases[0]
+                    else:
+                        continue
+        print("not found :)")
+        return "NOT FOUND"
+    else:
+        # We got the ID with the Preferred Symbol lookup
+        print("Got ID:",my_ids)
+        for an_iden in my_ids:
+
+            # add an empty list to add the aliases to
+            gene_aliases_list = []
+
+            record_with_aliases = Entrez.efetch(db="gene",id=an_iden,retmode="json")
+            for line in record_with_aliases:
+                print(line)
+                if line.startswith("Other Aliases:"):
+                    print(line.split(":")[1:])
+                    alias_list = line.split(":")[1:]
+
+                    ####### JANEESH ADDED CODE #######
+
+                    # extracting each gene name and extending to the gene alias list
+                    for element in alias_list:
+                        # splitting according to commas
+                        word = element.split(", ")
+                        # extending the list with the alias
+                        gene_aliases_list.extend(word)
+                    # removing the spaces in the first alias
+                    first_value = gene_aliases_list[0]
+                    gene_aliases_list[0] = first_value.replace(" ", "")
+                    # removing the \n in the last alias
+                    last_value = gene_aliases_list[-1]
+                    gene_aliases_list[-1] = last_value.rstrip("\n")
+
+                    ###################################
+
+            entry = record_with_aliases.read()
+            print(entry)
+            return gene_aliases_list
+
+
+gene_aliases("")
+
