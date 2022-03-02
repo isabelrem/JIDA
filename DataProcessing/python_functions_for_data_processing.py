@@ -1,4 +1,5 @@
-# use the vcf to snp characteristics table for both
+########## VCF TO PANDAS DATAFRAME ##########  
+
 def VCFtoPandas(infile):
     ''' converts VCF to pandas dataframe: from https://stackoverflow.com/questions/70219758/vcf-data-to-pandas-dataframe
     
@@ -42,7 +43,7 @@ def VCFtoPandas(infile):
     return pd.DataFrame(informations, columns=header)
 
 
-
+########## VCF TO SNP TABLE CSV ##########  
 
 
 def VCF_to_snp(inVCF, outCSV, start, end):
@@ -129,7 +130,7 @@ def VCF_to_snp(inVCF, outCSV, start, end):
         df.to_csv(outCSV, index = False)
         
 
-
+########## VCF TO SNP CHARACTERISTICS TABLE CSV ##########  
 
 def VCF_to_snp_characteristics(inputlist, outputlist, popcodelist, start, end):
     '''converting multiple population VCFs to a combined SNP characterisitcs CSV, removing multi-allelic sites.
@@ -282,4 +283,38 @@ def VCF_to_snp_characteristics(inputlist, outputlist, popcodelist, start, end):
     # export to csv
     filename = "snp_characteristics" + str(start) + "-" + str(end) + ".csv"
     combined.to_csv(filename, index=False, encoding='utf-8-sig')
+    
+    
+########## GENOMIC POSITION TO GENE NAME ##########    
 
+def genomic_position_to_gene_name(chromosome, genome_position):
+    """" Extracting gene name from genome position using pyensembl """
+
+    # Import the required dependencies
+    import pyensembl
+    import pandas as pd
+
+    # The ensembl database called the object ensembl
+    ensembl = pyensembl.EnsemblRelease()
+
+    genes = ensembl.genes_at_locus(contig=chromosome, position=genome_position)
+
+    # Finding the gene at a particular location
+    # contig - the chromosome we are interested in
+    # e.g. pos - 18714230, gene name - MIR548XHG
+    gene_info = genes[0]
+
+
+    # extracting out all the information and placing them in a dictionary
+    gene_info_dict = {"gene_id": gene_info.gene_id,
+                      "gene_name": gene_info.gene_name,
+                      "biotype": gene_info.biotype,
+                      "contig": gene_info.contig,
+                      "start": gene_info.start,
+                      "end": gene_info.end,
+                      "strand": gene_info.strand,
+                      "genome": gene_info.genome}
+    name = gene_info_dict['gene_name']
+
+    # returning the dictionary
+    return genome_position,name
