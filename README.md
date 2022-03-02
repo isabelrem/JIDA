@@ -15,6 +15,7 @@ Please download the following packages in your terminal...
 
 ```bash
 pip install pandas (in case this was not installed along with python)
+pip install numpy (in case this was not installed along with pandas)
 pip install Flask
 pip install flask-wtf
 pip install biopython
@@ -62,6 +63,7 @@ Thirdly, download the prerequisite python packages/modules. This can be done fro
 
 ```bash
 pip install pandas (in case this was not installed along with python)
+pip install numpy (in case this was not installed along with pandas)
 pip install Flask
 pip install flask-wtf
 pip install biopython
