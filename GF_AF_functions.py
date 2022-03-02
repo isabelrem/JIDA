@@ -1,12 +1,35 @@
-### Genotype frequency function ###
+"""
+@author: dpava
+"""
 
+''' This module contains functions to calculate genotype and allele frequencies tailored to the needs of the JIDA web application.'''
+
+### Genotype frequency function ### 
 
 def gtfreq(GT00, GT01, GT10, GT11):
-    ''' Calculates the genotype frequency based on the samples that exhibit a specific GT. The function recieves
-        the count of each GT and divides it by the total sample count (which is the sum of all GT counts).
-        The function assumes diploid samples. Thus, it only recieves 4 numeric inputs in the following order:
-        GT 0|0, 0|1, 1|0, 1|1 in the format GT 00,01,10,11, respectively.
-        Returns a dictionary with the genotype as key and the frequency as value rounded to 3 decimal places . '''
+    
+    
+    ''' Calculates the genotype frequency from the a given number of genotypes 
+    
+    Parameters
+    ----------
+    GT00: int
+    GT01: int
+    GT10: int
+    GT11: int
+    
+    Description
+    -----------
+    Calculates the genotype frequency based on the samples that exhibit a specific genotype (GT). The function recieves
+    the count of each GT and divides it by the total sample count (which is the sum of all GT counts).
+    The function assumes diploid samples. Thus, it only recieves 4 numeric inputs in the following order:
+    GT 0|0, 0|1, 1|0, 1|1 in the format GT 00,01,10,11, respectively These values are stored in a dictionary.
+        
+    
+    Returns
+    -------
+    Returns a dictionary with the genotype as key and the frequency as value rounded to 3 decimal places
+    '''
 
     # Calculates sample count by adding the frequency of each genotype.
     sample_count = GT00 + GT01 + GT10 + GT11
@@ -33,12 +56,30 @@ def gtfreq(GT00, GT01, GT10, GT11):
 ### Allele frequency function ###
 
 def allefreq(GT00, GT01, GT10, GT11):
-    ''' Calculates the allele frequency based on the samples that exhibit a specific GT. The function recieves
-        the count of each GT, adds the corresponding allele values together and divides it by the total sample
-        count (which is the sum of all GT counts).
-        The function assumes diploid samples. Thus, it only recieves 4 inputs in the following order:
-        GT 0|0, 0|1, 1|0, 1|1 in the format GT 00,01,10,11, respectively.
-        Returns a dictionary with the allele as key and the frequency as value rounded to 3 decimal places. '''
+    
+    ''' Calculates the genotype frequency from the a given number of genotypes 
+    
+    Parameters
+    ----------
+    GT00: int
+    GT01: int
+    GT10: int
+    GT11: int
+    
+    Description
+    -----------
+    Calculates the allele frequency based on the samples that exhibit a specific genotype (GT). The function recieves
+    the count of each GT, adds the corresponding allele values together and divides it by the total sample
+    count (which is the sum of all GT counts).
+    The function assumes diploid samples. Thus, it only recieves 4 inputs in the following order:
+    GT 0|0, 0|1, 1|0, 1|1 in the format GT 00,01,10,11, respectively.
+    
+        
+    Returns
+    -------
+    Returns a dictionary with the allele number as key and the frequency as value rounded to 3 decimal places
+    '''
+    
 
     # Calculates sample count by adding the frequency of each genotype.
     sample_count = GT00 + GT01 + GT10 + GT11
