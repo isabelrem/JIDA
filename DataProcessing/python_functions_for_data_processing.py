@@ -82,7 +82,7 @@ def VCF_to_snp(inVCF, outCSV, start, end):
     from pathlib import Path
 
     # iterate over the 5 population vcfs
-    for inVCF, outCSVin zip(inputlist,outputlist):
+    for inVCF, outCSV in zip(inputlist,outputlist):
 
         # check inputs
         print("process started...")
