@@ -4,7 +4,7 @@ JIDA is a web application that retrieves SNP information for a genomic region of
 
 ## Installation
 
-Using python versions 3.9.2
+Using python versions 3.9.2 and 3.8.10.
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
@@ -18,16 +18,53 @@ pip install scikit-allel[full]
 pip install plotly
 ```
 
-## How to run
-install the requirements 
-run in the command line 
+## How to run via command line
+Clone the git repository or onedrive folder to your local machine. Within your terminal, navigate to inside the repository, such that running ls produces this output. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Onedrive.
 
-what folders are required from the gh?????????
+```bash
+PS C:\Users\isabe\PycharmProjects\JIDA> ls
 
 
-```python
+    Directory: C:\Users\isabe\PycharmProjects\JIDA
+
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----       01/03/2022     13:35                static
+d-----       01/03/2022     14:04                templates
+-a----       02/03/2022     12:25          38388 APP.py
+-a----       28/02/2022     18:14           1610 forms.py
+-a----       28/02/2022     14:01           2665 GF_AF_functions.py
+-a----       01/03/2022     13:35            198 Installation Requirements.txt
+-a----       01/03/2022     13:49      389398528 SNPB (1).db
+-a----       28/02/2022     19:20          23184 stats.py
+-a----       01/03/2022     18:11          12701 Validate_Search_Functions.py
+```
+
+Once all prerequisites have been confirmed present, you can run the web application locally using the following terminal command.
+
+```bash
 python APP.py
 ```
+
+## How to run via pycharm
+
+First, open a new project. This is an important step as it allowed a virtual environemnt folder to be generated.
+
+Second, clone the git repository or onedrive folder to your local machine. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Onedrive. Copy the downloaded contents into your newly created Pycharm project file.
+
+Thirdly, download the prerequisite python packages/modules. This can be done from the terminal within Pycharm, or a separate application such as Windows Powershell.
+
+```bash
+pip install Flask
+pip install flask-wtf
+pip install biopython
+pip install scikit-allel[full]
+pip install plotly
+```
+
+
+Finally, within Pycharm open APP.py, and run the script. 
 
 
 ## Credits and Contact
