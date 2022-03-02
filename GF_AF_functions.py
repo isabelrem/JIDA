@@ -9,7 +9,7 @@
 def gtfreq(GT00, GT01, GT10, GT11):
     
     
-    ''' Calculates the genotype frequency from the a given number of genotypes 
+    ''' Calculates the genotype frequency from a given number of genotypes 
     
     Parameters
     ----------
@@ -20,9 +20,9 @@ def gtfreq(GT00, GT01, GT10, GT11):
     
     Description
     -----------
-    Calculates the genotype frequency based on the samples that exhibit a specific genotype (GT). The function recieves
+    Calculates the genotype frequency based on the samples that exhibit a specific genotype (GT). The function receives
     the count of each GT and divides it by the total sample count (which is the sum of all GT counts).
-    The function assumes diploid samples. Thus, it only recieves 4 numeric inputs in the following order:
+    The function assumes diploid samples. Thus, it only receives 4 numeric inputs in the following order:
     GT 0|0, 0|1, 1|0, 1|1 in the format GT 00,01,10,11, respectively These values are stored in a dictionary.
         
     
@@ -57,7 +57,7 @@ def gtfreq(GT00, GT01, GT10, GT11):
 
 def allefreq(GT00, GT01, GT10, GT11):
     
-    ''' Calculates the genotype frequency from the a given number of genotypes 
+    ''' Calculates the genotype frequency from a given number of genotypes 
     
     Parameters
     ----------
@@ -68,10 +68,10 @@ def allefreq(GT00, GT01, GT10, GT11):
     
     Description
     -----------
-    Calculates the allele frequency based on the samples that exhibit a specific genotype (GT). The function recieves
+    Calculates the allele frequency based on the samples that exhibit a specific genotype (GT). The function receives
     the count of each GT, adds the corresponding allele values together and divides it by the total sample
     count (which is the sum of all GT counts).
-    The function assumes diploid samples. Thus, it only recieves 4 inputs in the following order:
+    The function assumes diploid samples. Thus, it only receives 4 inputs in the following order:
     GT 0|0, 0|1, 1|0, 1|1 in the format GT 00,01,10,11, respectively.
     
         
