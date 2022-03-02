@@ -395,7 +395,7 @@ def nuc_div_sliding(dataframe, window_size):
     Description
     -----------
 
-    Recieves 2 parameters, a pandas dataframe and a window_size. Using the window_size integer, the dataframe is subset into windows and the nucleotide diversity is calculated across the window.
+    Recieves 2 parameters, a pandas dataframe and a window_size measured in base pairs. Using the window_size integer, the dataframe is subset into windows and the nucleotide diversity is calculated across the window.
     Calculating nucleotide diversity for the windows uses the pre-written functions genotype_list() and nucleotide_diversity().
     This function depends on the python packages/modules scikit-allel, pandas and math.
 
@@ -519,7 +519,7 @@ def SQLtoHapDiv_window(dataframe, window_size=10):
     Description
     -----------
     
-    Recieves 2 parameters, a pandas dataframe and a window_size. Using the window_size integer, the dataframe is subset into windows and the haplotype diversity is calculated across the window. 
+    Recieves 2 parameters, a pandas dataframe and a window_size measured in base pairs. Using the window_size integer, the dataframe is subset into windows and the haplotype diversity is calculated across the window. 
     Calculating haplotype diversity for the windows uses the pre-written functions haplotype_list() and haplotype_diversity(). 
     This function depends on the python packages/modules scikit-allel, pandas and math.
     
@@ -653,7 +653,7 @@ def SQLtoTD_window(dataframe, window_size=10):
     Description
     -----------
     
-    Recieves 2 parameters, a pandas dataframe and a window_size. Using the window_size integer, the dataframe is subset into windows and the Tajima's D statistic is calculated across the window. 
+    Recieves 2 parameters, a pandas dataframe and a window_size measured in base pairs. Using the window_size integer, the dataframe is subset into windows and the Tajima's D statistic is calculated across the window. 
     Calculating Tajima's D for each window uses the pre-written functions SQLtoTD(). 
     This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
     
@@ -775,7 +775,8 @@ def SQLtoFST_window(df_pop1, df_pop2, window_size=10):
     Description
     -----------
     
-    Recieves 3 parameters, one pandas dataframe for one population, another pandas dataframe for a second population, and a window_size. 
+    Recieves 3 parameters, one pandas dataframe for one population, another pandas dataframe for a second population,
+     and a window_size measured in base pairs. 
     Using the window_size integer, the both population dataframes are subset into windows and the FST statistic is calculated across the window using both dataframes. 
     Calculating the FST for each window uses the pre-written functions SQLtoFST(). 
     This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
