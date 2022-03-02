@@ -254,7 +254,30 @@ def hudson_FST(pop1_genotype_list, pop2_genotype_list):
 ############################### SQL to Nucleotide Diversity ###############################
 
 def SQLtoNucDiv(df, start, end):
-    ''' Using a dataframe and genomic start and end coordinates as inputs, outputs nucleotide diversity'''
+    ''' Using a dataframe and genomic start and end coordinates as inputs, outputs nucleotide diversity.
+    
+    Parameters
+    ----------
+
+    dataframe: a pandas dataframe, created using the python pandas library.
+    start: int, the genomic position to begin the search at.
+    end: int, the genomic position to end the search at.
+
+
+    Description
+    -----------
+
+    Recieves 3 parameters, a pandas dataframe and start and end genomic positions. 
+    The nucleotide diversity is calculated across the dataframe.
+    Calculating nucleotide diversity for the windows uses the pre-written functions genotype_list() and nucleotide_diversity().
+    This function depends on the python packages/modules scikit-allel, pandas and math.
+
+
+    Returns
+    -------
+    A nucleotide diversity value for between the specified start and end genomic positions.
+
+    '''
 
     # from the dataframe, produce a genotype list
     gen_list = genotype_list(df)
@@ -362,7 +385,24 @@ def nuc_div_sliding(dataframe, window_size):
 ############################### SQL to Haplotype Diversity ###############################
 
 def SQLtoHapDiv(df):
-    ''' Using a dataframe as input, outputs the haplotype diversity'''
+    ''' Using a dataframe as input, outputs the haplotype diversity
+    
+    Parameters
+    ----------
+    
+    dataframe: a pandas dataframe, created using the python pandas library. 
+        
+    Description
+    -----------
+    
+    Recieves 1 parameter, a pandas dataframe. The haplotype diversity is calculated across the dataframe. 
+    Calculating haplotype diversity uses the pre-written functions haplotype_list() and haplotype_diversity(). 
+    This function depends on the python packages/modules scikit-allel, pandas and math.
+    
+    Returns
+    -------
+    
+    A haplotype diversity value.'''
 
     # Using the dataframe, generate a haplotype list
     hap_list = haplotype_list(df)
@@ -389,7 +429,7 @@ def SQLtoHapDiv_window(dataframe, window_size=10):
     -----------
     
     Recieves 2 parameters, a pandas dataframe and a window_size. Using the window_size integer, the dataframe is subset into windows and the haplotype diversity is calculated across the window. 
-    Calculating nucleotide diversity for the windows uses the pre-written functions haplotype_list() and haplotype_diversity(). 
+    Calculating haplotype diversity for the windows uses the pre-written functions haplotype_list() and haplotype_diversity(). 
     This function depends on the python packages/modules scikit-allel, pandas and math.
     
     Returns
@@ -464,7 +504,24 @@ def SQLtoHapDiv_window(dataframe, window_size=10):
 ############################### SQL TO TAJIMA'S D ###############################
 
 def SQLtoTD(df):
-    '''Using a dataframe as input, calculates Tajima's D'''
+    '''Using a dataframe as input, calculates Tajima's D.
+    
+     Parameters
+    ----------
+    
+    dataframe: a pandas dataframe, created using the python pandas library. 
+    
+    Description
+    -----------
+    
+    Recieves 1 parameter, a pandas dataframe. The Tajima's D statistic is calculated across the dataframe. 
+    Calculating Tajima's D uses the pre-written functions Tajimas_D() and genotype_list. 
+    This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
+    
+    Returns
+    -------
+    
+    A Tajima's D value.'''
 
     # Using the dataframe, generate a genotype list
     gen_list = genotype_list(df)
@@ -578,7 +635,27 @@ def SQLtoTD_window(dataframe, window_size=10):
 ############################### SQL TO FST ###############################
 
 def SQLtoFST(df_pop1, df_pop2):
-    ''' Using two population dataframes as input, calculates the FST value for the two populations'''
+    ''' Using two population dataframes as input, calculates the FST value for the two populations.
+    
+    Parameters
+    ----------
+    
+    df_pop1: a pandas dataframe containing variant data from only 1 population, created using the python pandas library. 
+    df_pop2: a pandas dataframe containing variant data from only 1 population, created using the python pandas library. 
+   
+    
+    Description
+    -----------
+    
+    Recieves 2 parameters, one pandas dataframe for one population, another pandas dataframe for a second population. 
+    The FST statistic is calculated across both dataframes. 
+    Calculating the FST for each window uses the pre-written functions genotype_list() and hudson_FST().
+    This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
+    
+    Returns
+    -------
+    
+    A list of FST values calculated for each window.'''
 
     # Using the first input dataframe, generate a genotype list for population 1
     gen_list_pop1 = genotype_list(df_pop1)
