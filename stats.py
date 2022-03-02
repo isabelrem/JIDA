@@ -33,7 +33,22 @@ def SQLtoPandasViaPOS(database, table, start, end):
 ############################### HAPLOTYPE LIST ###############################
 
 def haplotype_list(dataframe):
-    ''' Using a dataframe as input, creates a haplotype list '''
+    ''' Produces a haplotype list from a dataframe
+
+    Parameters
+    ----------
+    dataframe: dataframe
+
+    Description
+    -----------
+    From the dataframe the phased genotype frequency columns are extracted. For each row the value of the counter is
+    the number of times the phased genotype is appended to the list. Both the alleles are appended to the haplotype list.
+    This runs through each phased genotype column.
+
+    Returns
+    -------
+    Haplotype list  '''
+
 
     # producing an empty genotype columns dataframe, with the column headers specified.
     genotype_columns = dataframe[['0|0', '0|1', '1|0', '1|1']]
@@ -94,7 +109,22 @@ def haplotype_list(dataframe):
 
 
 def genotype_list(dataframe):
-    '''takes a dataframe as input and outputs a genotype list'''
+    ''' Produces a genotype list from a dataframe
+
+    Parameters
+    ----------
+    dataframe: dataframe
+
+    Description
+    -----------
+
+    From the dataframe the phased genotype frequency columns are extracted. For each row the value of the counter is
+    the number of times the phased genotype is appended to the list. This runs through each phased genotype column.
+
+    Returns
+    -------
+    Genotype list  '''
+    
     # initiate empty genotype column dataframe with specified column headers
     genotype_columns = dataframe[['0|0', '0|1', '1|0', '1|1']]
 
@@ -148,8 +178,25 @@ def genotype_list(dataframe):
 ############################### NUCLOTIDE DIVERSITY ###############################
 
 def nucleotide_diversity(genotype_list, start, end):
-    ''' Using a genotype list and two genomic coordinates as input, outputs the nucleotide diversity for this DNA'''
+    ''' Calculates nucleotide diversity
 
+    Parameters
+    ----------
+    genotype_list: list
+    start: int
+    end: int
+
+    Description
+    -----------
+    Converts the genotype list into a genotype array and extracts the allele counts. Using the start and end genomic
+    position inputs a variant position list is produced. Using the sequence diversity function from SciKit Allel
+    the variant position and allele counts are inserted.
+
+    Returns
+    -------
+    Single nucleotide diversity value '''
+
+    
     # import dependencies
     import allel
 
@@ -175,7 +222,20 @@ def nucleotide_diversity(genotype_list, start, end):
 ############################ HAPLOTYPE DIVERSITY #############################
 
 def haplotype_diversity(haplotypelist):
-    ''' calculating haplotype diversity from a haplotype list '''
+    ''' Calculates haplotype diversity
+
+    Parameters
+    ----------
+    haplotypelist: list
+
+    Description
+    -----------
+    Converts the haplotype list into a haplotype array. The haplotype array is inserted in the haplotype diversity
+    function from SciKit Allel.
+
+    Returns
+    -------
+    Single haplotype diversity value '''
 
     # importing dependencies
     import allel
@@ -196,7 +256,21 @@ def haplotype_diversity(haplotypelist):
 ################################### TAJIMA'S D ########################################
 
 def Tajimas_D(genotype_list,POS):
-    ''' Using the genotype list to calculate Tajima's D'''
+    ''' Calculates Tajima's D
+
+    Parameters
+    ----------
+    genotype_list: list
+    POS: list
+
+    Description
+    -----------
+    Converts the genotype list into a genotype array and extracts the allele counts. Using the SciKit Allel function
+    tajima d the allele count and variant position list is inserted, the minimum segregated sites selected is 1.
+
+    Returns
+    -------
+    Single Tajima's D value '''
 
     # import required dependencies
     import allel
@@ -216,7 +290,24 @@ def Tajimas_D(genotype_list,POS):
 ############################### HUDSON FST ###############################
 
 def hudson_FST(pop1_genotype_list, pop2_genotype_list):
-    ''' Using two genotype lists as input, calculates the FST between two populations'''
+    ''' Calculates Hudson FST
+
+    Parameters
+    ----------
+    pop1_genotype_list: list
+    pop2_genotype_list: list
+
+    Description
+    -----------
+    Converts the genotype lists for both populations into a genotype arrays and extracts the allele counts. Using the
+    hudson fst function from SciKit Allel the numerator and denominator values are extracted. If the denominator value
+    is 0, then the FST value is returned as 0. Otherwise, FST is calculated by dividing the sum of the numerator and
+    denominator. If NaN is returned then the FST value is returned as 0.
+
+    Returns
+    -------
+    Single Hudson FST value '''
+
 
     # import dependencies
     import allel
@@ -248,10 +339,10 @@ def hudson_FST(pop1_genotype_list, pop2_genotype_list):
     return fst_average
 
 ######################################################################################
-#################################### SQL stuff #######################################
+######################################### SQL ########################################
 ######################################################################################
 
-############################### SQL to Nucleotide Diversity ###############################
+############################### SQL to Nucleotide Diversity ##########################
 
 def SQLtoNucDiv(df, start, end):
     ''' Using a dataframe and genomic start and end coordinates as inputs, outputs nucleotide diversity.
