@@ -15,8 +15,7 @@ def VCF_to_snp(inVCF, outCSV, start, end):
     Description
     -----------
     
-    Receives 4 parameters: the path to a VCF, the path to an output CSV, a list of population codes and 
-     start and end index values.
+    Receives 4 parameters: the path to a VCF, the path to an output CSV and start and end index values.
     Converts the VCF to a dataframe, and then subsets that dataframe based on the start and end indices specified.
     Once subset, multiallelic sites are removed from the dataframe.
     The columns are then reduced to just 'chromsome','position','rs_value','reference','alternate'.
@@ -88,7 +87,37 @@ def VCF_to_snp(inVCF, outCSV, start, end):
 
 
 def VCF_to_snp_characteristics(inputlist, outputlist, popcodelist, start, end):
-    '''converting multiple population VCFs to a combined SNP characterisitcs CSV, removing multi-allelic sites. Author: Isabel Thompson.'''
+    '''converting multiple population VCFs to a combined SNP characterisitcs CSV, removing multi-allelic sites.
+    
+    Parameters
+    ----------
+    
+    inputlist: list of strings in which each string is the file path to a population VCF.
+    outputlist: list of strings in which each string is the file path to an output population CSV.
+    popcodelist: list of strings, in which each string is a three letter population code.
+    start: int, index at which to start the subset dataframe.
+    end: int, index at which to end the subset dataframe.
+    
+    
+    Description
+    -----------
+    
+    Receives 5 parameters: the paths to population VCFs, the paths to output population CSVs, a list of population codes and 
+     start and end index values.
+    Each population VCF is converted to a pandas dataframe, and then subset that based on the start and end indices specified.
+    Once subset, multiallelic sites are removed from each dataframe. The dataframes are filtered to just the 'rs_value'
+     column, while a new dataframe is created in which the sample count and calculated phased genotype counts are stored.
+     Following these calculations, the two dataframes per population are fused together, and written to CSV.
+    Converting the VCF to a dataframe uses the pre-written function VCFtoPandas().
+    This function depends on the python packages/modules pandas, os, pathlib, glob. 
+    
+    Returns
+    -------
+    
+    (1) a csv for each population, containing the rs_value, sample count and phased genotype counts.
+    (2) a csv made from the combination of each population csv.
+    
+    '''
 
     # import dependencies
     import pandas as pd
@@ -106,10 +135,6 @@ def VCF_to_snp_characteristics(inputlist, outputlist, popcodelist, start, end):
         # create dataframe
         df = VCFtoPandas(inVCF)
         print("dataframe created")
-
-
-
-
         # rename columns in accordance with SQL schema
         df.rename(columns={'#CHROM': 'chromosome', 'POS': 'position', 'ID': 'rs_value', 'REF': 'reference', 'ALT': 'alternate'}, inplace=True)
 
@@ -146,20 +171,11 @@ def VCF_to_snp_characteristics(inputlist, outputlist, popcodelist, start, end):
 
         print("data filtered")
 
-
-
-
-
-
         # filter dataframe to just the sample columns
         sample_cols = [col for col in df if col.startswith('HG')]
         print("columns filtered")
         df_samples = df[sample_cols]
         #print(df_samples)
-
-
-
-
 
         # delete df to free up memory
         del df
@@ -222,10 +238,3 @@ def VCF_to_snp_characteristics(inputlist, outputlist, popcodelist, start, end):
     filename = "snp_characteristics" + str(start) + "-" + str(end) + ".csv"
     combined.to_csv(filename, index=False, encoding='utf-8-sig')
 
-
-
-vcfnamelist = ['Punjabi_SNV_only.vcf', 'Colombian_SNV_only.vcf', 'British_SNV_only.vcf','Telugu_SNV_only.vcf','Finnish_SNV_only.vcf']
-csvnamelist = ['Punjabi.csv', 'Colombian.csv','British.csv','Telugu.csv','Finnish.csv']
-popnamelist = ['PUN', 'COL','GBR','TEL','FIN']
-
-VCF_to_snp_characteristics(vcfnamelist,csvnamelist,popnamelist, 0, 10)
