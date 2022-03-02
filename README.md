@@ -50,6 +50,7 @@ Once all prerequisites have been confirmed present, you can run the web applicat
 ```bash
 python APP.py
 ```
+The terminal will display a local http address, please copy and paste this into your browser of preference. 
 
 ## How to run via pycharm
 
@@ -69,7 +70,8 @@ pip install plotly
 ```
 
 
-Finally, within Pycharm open APP.py, and run the script. 
+Finally, within Pycharm open APP.py, and run the script.
+The terminal will display a local http address, clicking it will open a browser with the app.
 
 
 ## Credits and Contact
