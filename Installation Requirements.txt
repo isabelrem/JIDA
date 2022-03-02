@@ -5,3 +5,5 @@ pip install flask-wtf
 pip install biopython
 pip install scikit-allel[full]
 pip install plotly
+pip install pandas
+pip install numpy
