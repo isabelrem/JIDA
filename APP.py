@@ -490,6 +490,9 @@ def Nucleotide_w_graph():
         fig.update_yaxes(title_text="Nucleotide Diversity", row=1, col=1)
         # adding to the counter to continue for the next population the user has selected
         n += 1
+        
+        # allows the x axis to be shown in whole numbers rather than the abbreviation of million as "M"
+        fig.update_layout(xaxis=dict(tickformat = ".0f"))
 
     # returning the figure withe header and the description
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
@@ -579,6 +582,10 @@ def Haplotype_w_graph():
         fig.update_yaxes(title_text="Haplotype Diversity", row=1, col=1)
         # this occurs for each population thus the counter increases
         n += 1
+        
+        # allows the x axis to be shown in whole numbers rather than the abbreviation of million as "M"
+        fig.update_layout(xaxis=dict(tickformat = ".0f"))
+
 
     # the graph is returned along with a header and description
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
@@ -667,6 +674,10 @@ def Tajimas_w_graph():
         fig.update_yaxes(title_text="Tajima's D", row=1, col=1)
         # this plot is for all populations so the counter increases to produce results for the next selected population
         n += 1
+        
+        # allows the x axis to be shown in whole numbers rather than the abbreviation of million as "M"
+        fig.update_layout(xaxis=dict(tickformat = ".0f"))
+
 
     # returning the graph with the header and the description
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
@@ -748,6 +759,10 @@ def FST_w_graph():
         fig.update_yaxes(title_text="FST", row=1, col=1)
         # the counter increases to produce the plot for the next selected population
         n += 1
+        
+        # allows the x axis to be shown in whole numbers rather than the abbreviation of million as "M"
+        fig.update_layout(xaxis=dict(tickformat = ".0f"))
+
 
     # the graph is returnd alongside the header and description
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
