@@ -2,6 +2,9 @@
 
 JIDA is a web application that retrieves SNP information for a genomic region of interest in Homo sapiens and calculates specific summary statistics of interest for specified populations. Users are able to enter either the RS value, start and end genomic positions or the gene name and its aliases and select information for particular statistics and populations. The statistical outputs the website provides are Nucleotide diversity, Haplotype diversity, Tajima's D and FST. Information for the British, Finnish, Colombian, Punjabi and Telugu population is present in the database and is utilised by the web application. 
 
+## OS
+Note the application is supported by Windows and Linux machines.
+
 ## Installation
 
 Using python versions 3.9.2 and 3.8.10.
@@ -11,6 +14,7 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 Please download the following packages in your terminal...
 
 ```bash
+pip install pandas (in case this was not installed along with python)
 pip install Flask
 pip install flask-wtf
 pip install biopython
