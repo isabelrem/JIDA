@@ -1,5 +1,23 @@
-def VCFtosnp(inputlist, outputlist, popcodelist):
-    'converting multiple population VCFs to a combined CSV, removing multi-allelic sites. Author: Isabel Thompson.'
+def VCFtosnp(inputlist, outputlist, popcodelist,start,end):
+    '''converts multiple population VCFs to a combined CSV containing information on the genomic position,
+    reference and alternate alleles, and rs values. Removes multi-allelic sites.
+    
+    Parameters
+    ----------
+    
+    inputlist: list of strings, where each string is the path to a population VCF file
+    outputlist: list of strings, where each string is the path to an output population snp table CSV
+    popcodelist: list of strings, where each string is a three letter code for a different population
+    start:
+    end:
+    
+    
+    Description
+    -----------
+    
+    Recieve 5 parameters: a list of input file paths, a list of output file paths, and a list of population codes. 
+    
+    '''
 
     # import dependencies
     import pandas as pd
@@ -23,7 +41,7 @@ def VCFtosnp(inputlist, outputlist, popcodelist):
         print("columns renamed")
 
         # shorten the df
-        df = df.loc[1000001:]
+        df = df.loc[start:end]
 
         # extract row names
         row_labels_df = list(df.index)
