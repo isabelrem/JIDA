@@ -288,7 +288,30 @@ def VCF_to_snp_characteristics(inputlist, outputlist, popcodelist, start, end):
 ########## GENOMIC POSITION TO GENE NAME ##########    
 
 def genomic_position_to_gene_name(chromosome, genome_position):
-    """" Extracting gene name from genome position using pyensembl """
+    """" Extracting gene name from genome position using pyensembl 
+    
+    Parameters
+    ----------
+    
+    chromosome: int
+    genome_position: int
+    
+    
+    Description
+    -----------
+    
+    Using the chromsome and genome position specified, connects to the ensembl database and extracts the gene name
+     associated with the position (if there is one present). 
+    This function depends on the python packages/modules pandas, and pyensembl.
+     
+    
+    Returns
+    -------
+    
+    Returns as a tuple the genome position and its associated gene name.
+    
+    
+    """
 
     # Import the required dependencies
     import pyensembl
