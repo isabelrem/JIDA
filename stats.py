@@ -4,7 +4,7 @@ import numpy as np
 
 
 def SQLtoPandasViaPOS(database, table, start, end):
-    ' Using the inputs of a database name, table name, and start and end genomic coordinates, produces a pandas dataframe'
+    ''' Using the inputs of a database name, table name, and start and end genomic coordinates, produces a pandas dataframe'''
     # importing dependencies
     import pandas as pd
     import sqlite3
@@ -175,7 +175,7 @@ def nucleotide_diversity(genotype_list, start, end):
 ############################ HAPLOTYPE DIVERSITY #############################
 
 def haplotype_diversity(haplotypelist):
-    ''' Calculating haplotype diversity with a haplotype list input '''
+    ''' calculating haplotype diversity from a haplotype list '''
 
     # importing dependencies
     import allel
@@ -196,7 +196,7 @@ def haplotype_diversity(haplotypelist):
 ################################### TAJIMA'S D ########################################
 
 def Tajimas_D(genotype_list,POS):
-    ''' Calculating Tajima's D with the genotype list and a list with the variant positions '''
+    ''' Using the genotype list to calculate Tajima's D'''
 
     # import required dependencies
     import allel
@@ -216,7 +216,7 @@ def Tajimas_D(genotype_list,POS):
 ############################### HUDSON FST ###############################
 
 def hudson_FST(pop1_genotype_list, pop2_genotype_list):
-    ''' Calculating Hudsons FST with the genotype lists of two populations '''
+    ''' Using two genotype lists as input, calculates the FST between two populations'''
 
     # import dependencies
     import allel
@@ -269,7 +269,28 @@ def SQLtoNucDiv(df, start, end):
 ############################### WINDOWED NUCLEOTIDE DIVERSITY ###############################
 
 def nuc_div_sliding(dataframe, window_size):
-    '''Using a dataframe and window size as input, outputs a list of nucleotide diversity values for each window'''
+    '''Using a dataframe and window size as input, outputs a list of nucleotide diversity values for each window
+
+    Parameters
+    ----------
+
+    dataframe: a pandas dataframe, created using the python pandas library.
+    window_size: int
+
+
+    Description
+    -----------
+
+    Recieves 2 parameters, a pandas dataframe and a window_size. Using the window_size integer, the dataframe is subset into windows and the nucleotide diversity is calculated across the window.
+    Calculating nucleotide diversity for the windows uses the pre-written functions genotype_list() and nucleotide_diversity().
+    This function depends on the python packages/modules scikit-allel, pandas and math.
+
+
+    Returns
+    -------
+    A list of nucleotide diversity values calculated for each window.
+
+    '''
 
     # import dependencies
     import math
