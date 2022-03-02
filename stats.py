@@ -270,7 +270,7 @@ def SQLtoNucDiv(df, start, end):
     Recieves 3 parameters, a pandas dataframe and start and end genomic positions. 
     The nucleotide diversity is calculated across the dataframe.
     Calculating nucleotide diversity for the windows uses the pre-written functions genotype_list() and nucleotide_diversity().
-    This function depends on the python packages/modules scikit-allel, pandas and math.
+    This function depends on the python packages/modules scikit-allel, pandas.
 
 
     Returns
@@ -397,7 +397,7 @@ def SQLtoHapDiv(df):
     
     Recieves 1 parameter, a pandas dataframe. The haplotype diversity is calculated across the dataframe. 
     Calculating haplotype diversity uses the pre-written functions haplotype_list() and haplotype_diversity(). 
-    This function depends on the python packages/modules scikit-allel, pandas and math.
+    This function depends on the python packages/modules scikit-allel, pandas.
     
     Returns
     -------
@@ -516,7 +516,7 @@ def SQLtoTD(df):
     
     Recieves 1 parameter, a pandas dataframe. The Tajima's D statistic is calculated across the dataframe. 
     Calculating Tajima's D uses the pre-written functions Tajimas_D() and genotype_list. 
-    This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
+    This function depends on the python packages/modules scikit-allel, pandas, numpy.
     
     Returns
     -------
@@ -650,7 +650,7 @@ def SQLtoFST(df_pop1, df_pop2):
     Recieves 2 parameters, one pandas dataframe for one population, another pandas dataframe for a second population. 
     The FST statistic is calculated across both dataframes. 
     Calculating the FST for each window uses the pre-written functions genotype_list() and hudson_FST().
-    This function depends on the python packages/modules scikit-allel, pandas, numpy and math.
+    This function depends on the python packages/modules scikit-allel, pandas, numpy.
     
     Returns
     -------
