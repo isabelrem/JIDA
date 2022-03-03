@@ -91,6 +91,10 @@ pip install numpy
 Finally, within Pycharm open APP.py, and run the script.
 The terminal will display a local http address, clicking it will open a browser with the app.
 
+## Documentation
+To get a closer look at the documentation for all functions used in the application you can use pydoc. 
+In a terminal type pydoc -w "python_file_you_want_documentation_for". Remember to exclude the .py format.
+This will produce an html file containing detiled documentation. 
 
 ## Credits and Contact
 Janeesh Kaur Bansal : j.k.bansal@se21.qmul.ac.uk
