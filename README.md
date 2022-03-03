@@ -40,7 +40,7 @@ pip install numpy
 ```
 
 ## How to run via command line
-Clone the git repository or onedrive folder to your local machine. Within your terminal, navigate to inside the repository, such that running ls (linux) or dir (windows) produces this output. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Google Drive link.
+Clone the git repository or onedrive Application folder to your local machine. Within your terminal, navigate to inside the repository, such that running ls (linux) or dir (windows) produces this output. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Google Drive link.
 
 ```bash
 PS C:\Users\isabe\PycharmProjects\JIDA> ls
@@ -71,9 +71,9 @@ The terminal will display a local http address, please copy and paste this into 
 
 ## How to run via pycharm
 
-First, open a new project. This is an important step as it allowed a virtual environemnt folder to be generated.
+First, open a new project. This is an important step as it allows a virtual environemnt folder to be generated.
 
-Second, clone the git repository or onedrive folder to your local machine. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Onedrive. Copy the downloaded contents into your newly created Pycharm project file.
+Second, clone the git repository or onedrive Application folder to your local machine. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Google Drive. Copy the downloaded contents into your newly created Pycharm project file.
 
 Thirdly, download the prerequisite python packages/modules. This can be done from the terminal within Pycharm, or a separate application such as Windows Powershell.
 
