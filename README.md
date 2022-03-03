@@ -27,9 +27,7 @@ Note the application is supported on Windows and Linux machines.
 
 Using python versions 3.9.2 and 3.8.10.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
-Please download the following packages in your terminal...
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the following via your terminal:
 
 ```bash
 pip install Flask
