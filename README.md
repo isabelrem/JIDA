@@ -94,7 +94,13 @@ The terminal will display a local http address, clicking it will open a browser 
 ## Documentation
 To get a closer look at the documentation for all functions used in the application you can use pydoc. 
 In a terminal type pydoc -w "python_file_you_want_documentation_for". Remember to exclude the .py format.
-This will produce an html file containing detiled documentation. 
+This will produce an html file containing detailed documentation. 
+
+For example, to get additional documentation for the stats.py functions, you would type:
+
+```bash
+pydoc -w stats
+```
 
 ## Credits and Contact
 Janeesh Kaur Bansal : j.k.bansal@se21.qmul.ac.uk
