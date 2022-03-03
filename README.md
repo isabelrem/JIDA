@@ -42,7 +42,7 @@ pip install numpy
 ```
 
 ## How to run via command line
-Clone the git repository or onedrive folder to your local machine. Within your terminal, navigate to inside the repository, such that running ls produces this output. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Onedrive.
+Clone the git repository or onedrive folder to your local machine. Within your terminal, navigate to inside the repository, such that running ls (linux) or dir (windows) produces this output. PLEASE NOTE: if cloning the git repository, you will also have to separately download the SNP database 'SNPB (1).db' from the Onedrive.
 
 ```bash
 PS C:\Users\isabe\PycharmProjects\JIDA> ls
