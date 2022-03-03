@@ -2,6 +2,19 @@
 
 JIDA is a web application that retrieves SNP information for a genomic region of interest in Homo sapiens and calculates specific summary statistics of interest for specified populations. Users are able to enter either the RS value, start and end genomic positions or the gene name and its aliases and select information for particular statistics and populations. The statistical outputs the website provides are Nucleotide diversity, Haplotype diversity, Tajima's D and FST. Information for the British, Finnish, Colombian, Punjabi and Telugu population is present in the database and is utilised by the web application. 
 
+## Important links
+The SQL database:
+This database file is only accessible to those with QMUL email addresses, owing to being stored on the QMUL Onedrive. If you have downloaded the application from github, you will need to place this database file within the same directory as APP.py.
+https://qmulprod-my.sharepoint.com/:u:/g/personal/bt211032_qmul_ac_uk/ERJTXKbtvc1DkaV0-j_wRLQBe4hh4bCm6lvKzuLs443nSA?e=lBRxgt
+
+OneDrive:
+This folder is only accessible to those with QMUL email addresses, owing to being stored on the QMUL Onedrive. This folder contains (1) an Application subdirectory, which contains everything you need to run the application locally (2) a Documentation subdirectory, which contains all documentation and (3) an Appendix subdirectory which contains scripts, CSVs and VCF files used to create the SQL database.
+https://qmulprod-my.sharepoint.com/:f:/g/personal/bt211032_qmul_ac_uk/EpmZJ8ghymBEuY17LKb-fLcBkITJzF_EQsm9QVqqZLWMDQ?e=5JmTHw
+
+Github:
+This repository contains most of the Application files, the documentation files and some of the Appendix files (not all owing to size constraints).
+https://github.com/isabelrem/JIDA
+
 ## OS
 Note the application is supported on Windows and Linux machines.
 
